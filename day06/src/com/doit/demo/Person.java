@@ -12,5 +12,4 @@ public class Person {
     public String name;
     public char sex;
     public double height;
-
 }
