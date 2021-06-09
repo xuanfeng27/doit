@@ -51,3 +51,8 @@ git config --global http.sslVerify "false"
 问题：fatal: Unable to create 'D:/data/.git/index.lock': File exists.
 
 解决：执行：rm -f ./.git/index.lock  或  rm -Force ./.git/index.lock
+
+
+git rm -r  --cached D:\zll\develop-tools\JetBrains\IdeaProjects\doitedu\.idea
+git commit -m "移除"
+git push
