@@ -35,7 +35,7 @@ public class LoggerTest {
         consoleHandler.setLevel(Level.ALL);
         log.addHandler(consoleHandler);
         //文件控制器
-        FileHandler fileHandler = new FileHandler("D:/testDir/8888g.log");
+        FileHandler fileHandler = new FileHandler("D:/zll/8888g.log");
         fileHandler.setLevel(Level.INFO);
         log.addHandler(fileHandler);
 
