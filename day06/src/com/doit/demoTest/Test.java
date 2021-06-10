@@ -10,7 +10,19 @@ import com.doit.demo.Person;
  * @Version: 1.0
  */
 public class Test {
+    int a;
+    public Test() {
+        System.out.println("no");
+    }
+
+    public Test(int a){
+        System.out.println("aaa");
+        this.a =a;
+    }
+
     public static void main(String[] args) {
+        new Test(3);
+
         Person p = new Person();
         p.age = 23;
         p.name="zhao";
@@ -22,4 +34,5 @@ public class Test {
         p2.name="li";
         System.out.println(p2.height);
     }
+
 }
