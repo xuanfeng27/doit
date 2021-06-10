@@ -2,6 +2,8 @@ package com.doit.demoTest;
 
 import com.doit.demo.Person;
 
+import java.util.Objects;
+
 /**
  * @ClassName: test
  * @Author: zll
@@ -11,6 +13,13 @@ import com.doit.demo.Person;
  */
 public class Test {
     int a;
+    Student stu;
+
+    public Test(int a, Student stu) {
+        this.a = a;
+        this.stu = stu;
+    }
+
     public Test() {
         System.out.println("no");
     }
@@ -33,6 +42,28 @@ public class Test {
         p2.age = 33;
         p2.name="li";
         System.out.println(p2.height);
+
+        System.out.println("------------自定义类equals覆写----------------");
+        System.out.println(new Test(2).equals(new Test(2)));
+
+        int big = Integer.MAX_VALUE;
+        System.out.println("big = " + big);
+        int bigger = big * 4;
+        System.out.println("bigger = " + bigger);
+
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Test test = (Test) o;
+        return a == test.a && Objects.equals(stu, test.stu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a, stu);
+    }
 }
