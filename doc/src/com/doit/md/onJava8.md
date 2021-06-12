@@ -1,4 +1,9 @@
+[TOC]
+
+
+
 # OnJava8
+
 ### https://lingcoder.github.io/OnJava8/#/book/05-Control-Flow
 
 基本类型有自己对应的包装类型，如果你希望在堆内存里表示基本类型的数据，就需要用到它们的包装类。代码示例：
@@ -294,4 +299,169 @@ House()
 Window(33)
 f()
 ```
+
+### 方法的重写(override/overwrite) 
+
+定义：在子类中可以根据需要对从父类中继承来的方法进行改造，也称 为方法的重置、覆盖。在程序执行时，子类的方法将覆盖父类的方法。
+
+ 要求： 
+
+1. 子类重写的方法必须和父类被重写的方法具有相同的方法名称、参数列表 
+
+2. 子类重写的方法的返回值类型不能大于父类被重写的方法的返回值类型
+
+3. 子类重写的方法使用的访问权限不能小于父类被重写的方法的访问权限 子类不能重写父类中声明为private权限的方法 
+
+4. 子类方法抛出的异常不能大于父类被重写方法的异常  
+
+   注意： 子类与父类中同名同参数的方法必须同时声明为非static的(即为重写)，或者同时声明为 static的（不是重写）。因为static方法是属于类的，子类无法覆盖父类的方法
+
+   
+
+对于class的权限修饰只可以用public和default(缺省)。
+
+  public类可以在任意地方被访问。
+
+  default类只可以被同一个包内部的类访问。
+
+#### 关键字—super 
+
+在Java类中使用super来调用父类中的指定操作：
+
+ super可用于访问父类中定义的属性
+
+ super可用于调用父类中定义的成员方法
+
+ super可用于在子类构造器中调用父类的构造器
+
+ 注意：
+
+ 尤其当子父类出现同名成员时，可以用super表明调用的是父类中的成员
+
+ super的追溯不仅限于直接父类
+
+ super和this的用法相像，this代表本类对象的引用，super代表父类的内存 空间的标识
+
+#### 调用父类的构造器 
+
+**子类中所有的构造器默认都会访问父类中空参数的构造器 。**
+
+ 当父类中没有空参数的构造器时，子类的构造器必须通过this(参数列表)或者super(参数列表)语句指定调用本类或者父类中相应的构造器。同时，只能”二选一” ，且必须放在构造器的首行 
+
+如果子类构造器中既未显式调用父类或本类的构造器，且父类中又没有无参的构造器，则编译出错。
+
+#### this和super的区别
+
+| 区别点     | this                                                    | super                                     |
+| ---------- | ------------------------------------------------------- | ----------------------------------------- |
+| 访问属性   | 访问本类中的属性，如果本类没有此属性则从父类中继续查找  | 直接访问父类中的属性                      |
+| 调用方法   | 访问本类中的方法，如果本类没 有此方法则从父类中继续查找 | 直接访问父类中的方法                      |
+| 调用构造器 | 调用本类构造器，必须放在构造器的首行                    | 调用父类构造器，必须 放在子类构造器的首行 |
+
+
+
+#### 多态小结 
+
+多态作用： 
+
+ 提高了代码的通用性，常称作接口重用 
+
+ 前提： 
+
+ 需要存在继承或者实现关系
+
+  有方法的重写
+
+ 成员方法： 
+
+ 编译时：要查看引用变量所声明的类中是否有所调用的方法。
+
+  运行时：调用实际new的对象所属的类中的重写方法。
+
+ 成员变量：
+
+  不具备多态性，只看引用变量所声明的类。
+
+#### instanceof 操作符
+
+ x instanceof A：检验x是否为类A的对象，返回值为boolean型。
+
+### 对象类型转换 (Casting )
+
+基本数据类型的Casting：
+
+ 自动类型转换：
+
+小的数据类型可以自动转换成大的数据类型 如long g=20; double d=12.0f 
+
+强制类型转换：可以把大的数据类型强制转换(casting)成小的数据类型 如 float f=(float)12.0; int a=(int)1200L 
+
+#### 对Java对象的强制类型转换称为造型：
+
+ 从子类到父类的类型转换可以自动进行 
+
+从父类到子类的类型转换必须通过造型(强制类型转换)实现
+
+ **无继承关系的引用类型间的转换是非法的** 
+
+在造型前可以使用instanceof操作符测试一个对象的类型
+
+##### 子类继承父类
+
+ 若子类重写了父类方法，就意味着子类里定义的方法彻底覆盖了父类里的 同名方法，系统将不可能把父类里的方法转移到子类中。
+
+ 对于实例变量则不存在这样的现象，即使子类里定义了与父类完全相同的 实例变量，这个实例变量依然不可能覆盖父类中定义的实例变量
+
+```java
+对象类型转换举例
+public class Test {
+    public void method(Person e) { // 设Person类中没有getschool() 方法
+    // System.out.pritnln(e.getschool()); //非法,编译时错误
+        if (e instanceof Student) {
+            Student me = (Student) e; // 将e强制转换为Student类型
+            System.out.pritnln(me.getschool());
+        }
+    }
+    public static void main(String[] args){
+    Test t = new Test();
+    Student m = new Student();
+    t.method(m);
+    }
+}
+```
+
+```java
+Object类是所有Java类的根父类
+如果在类的声明中未使用extends关键字指明其父类，则默认父类为java.lang.Object类
+public class Person {
+...
+}
+等价于：
+public class Person extends Object {
+...
+}
+Object类中的主要结构
+    public Object() 构造 构造器
+    public boolean equals(Object obj) 普通 对象比较  String改写了方法
+    public int hashCode() 普通 取得Hash码    
+    public String toString() 普通 对象打印时调用   String改写了方法
+```
+
+#### 操作符与equals方法
+
+ equals()：所有类都继承了Object，也就获得了equals()方法。还可以重写。
+只能比较引用类型，其作用与“==”相同,比较是否指向同一个对象。
+格式:obj1.equals(obj2)
+特例：当用equals()方法进行比较时，对类**File、String、Date及包装类（Wrapper Class）**来说，是比较类型及内容而不考虑引用的是否是同一个对象；原因：在这些类中**重写了Object**类的equals()方法。
+当自定义使用equals()时，可以重写。用于比较两个对象的“内容”是否都相等
+
+#### toString() 方法
+
+ toString()方法在Object类中定义，其返回值是String类型，返回类名和它 的引用地址。 
+
+在进行String与其它类型数据的连接操作时，自动调用toString()方法 Date now=new Date(); System.out.println(“now=”+now); 相当于 System.out.println(“now=”+now.toString()); 
+
+可以根据需要在用户自定义类型中重写toString()方法 如String 类重写了toString()方法，返回字符串的值。 
+
+基本类型数据转换为String类型时，调用了对应包装类的toString()方法 int a=10; System.out.println(“a=”+a);
 
