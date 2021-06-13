@@ -8,7 +8,7 @@ package com.doit.zy;
  * @Version: 1.0
  */
 public class Home {
-
+     int a = 1;
     public Home() {
     }
 

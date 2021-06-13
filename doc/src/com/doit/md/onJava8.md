@@ -465,3 +465,27 @@ Object类中的主要结构
 
 基本类型数据转换为String类型时，调用了对应包装类的toString()方法 int a=10; System.out.println(“a=”+a);
 
+#### 访问权限修饰符
+
+private 是非常重要的，尤其是在多线程环境中。（在"并发编程"中将看到）。
+
+以下是一个使用 **private** 的例子：
+
+```java
+class Sundae {
+    private Sundae() {}
+    static Sundae makeASundae() {
+        return new Sundae();
+    }
+}
+
+public class IceCream {
+    public static void main(String[] args) {
+        //x Sundae x = new Sundae();
+        Sundae x = Sundae.makeASundae();
+    }
+}
+```
+
+以上展示了 **private** 的用武之地：控制如何创建对象，防止别人直接访问某个特定的构造器（或全部构造器）。例子中，你无法通过构造器创建一个 **Sundae** 对象，而必须调用 `makeASundae()` 方法创建对象。
+
