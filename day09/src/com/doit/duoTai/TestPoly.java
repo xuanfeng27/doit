@@ -23,11 +23,12 @@ public class TestPoly {
         h.lookHome(d);//接口类多态 upcasting
         h.lookHome(new Robot());//interface upcasting
         d.lookMe();//use interface default func
+        HomeKeeper.staticIface();//接口静态方法自己调用 Java8
 
         SupTxt txt = new SubTxt();
         txt.txt();//具体类多态
 
-        //多态下，访问成员变量是父类的
+        //*********多态下，访问成员变量是父类的***********
         System.out.println(txt.name);//"supname"
         System.out.println(txt.a);//2
         //txt.txt2();错误

@@ -18,7 +18,7 @@ public class CatClass extends Animal {
 
     @Override
     public void eat() {
-        System.out.println(getName()+"eat fish");
+        System.out.println(getName()+"eat fish");//继承get,set方法
     }
 
     @Override

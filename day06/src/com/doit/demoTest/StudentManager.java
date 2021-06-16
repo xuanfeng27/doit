@@ -120,6 +120,8 @@ public class StudentManager {
                     System.out.println("学生所在地");
                     list.get(i).address = sc.next();
                     System.out.println("修改学生成功");
+                   // Student s = new Student();
+                    //list.set(i,s);set方法
                     return;
                 }
             }

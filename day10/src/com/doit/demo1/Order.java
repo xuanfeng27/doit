@@ -1,5 +1,5 @@
 package com.doit.demo1;
-//使用场景 订单状态编号
+//final 使用场景 订单状态编号
 /**
  * @ClassName: Order
  * @Author: zll

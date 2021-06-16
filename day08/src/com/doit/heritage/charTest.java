@@ -19,11 +19,11 @@ public class charTest {
         int a = 33;
         System.out.println(""+a);
         char[] arr = new char[] { 'a', 'b', 'c' };
-        System.out.println(arr);
+        System.out.println(arr);//abc
         int[] arr1 = new int[] { 1, 2, 3 };
-        System.out.println(arr1);
+        System.out.println(arr1);//hashcode
         double[] arr2 = new double[] { 1.1, 2.2, 3.3 };
-        System.out.println(arr2);
+        System.out.println(arr2);//hashcode
 
         Object o1 = true ? new Integer(1) : new Double(2.0);
         System.out.println(o1);//1.0

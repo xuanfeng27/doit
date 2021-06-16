@@ -20,7 +20,13 @@ public class Student extends Person {
         System.out.println("student 带参构造");
     }
 
-    public Student(double id,String name,int age) {
+    public Student(String name, int age, String a, double id) {
+        super(name, age);
+        this.a = a;
+        this.id = id;
+    }
+
+    public Student(double id, String name, int age) {
         //在子类的每个构造方法的 第一行 都默认有一个父类的无参构造super（），不写也有，写了就Java不提供
         super(name,age);
         this.id = id;

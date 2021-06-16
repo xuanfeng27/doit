@@ -29,7 +29,7 @@ public class TestFailFast {
 /*之所以会抛出CMException异常，是因为我们的代码中使用了增强for循环，而在增强for循环中，
 集合遍历是通过iterator进行的，但是元素的add/remove却是直接使用的集合类自己的方法。
 这就导致iterator在遍历的时候，会发现有一个元素在自己不知不觉的情况下就被删除/添加了，
-就会抛出一个异常，用来提示用户，可能发生了并发修改！
+就会抛出一个异常，用来提示用户，可能发生了并发修改！modcount
 
 所以，在使用Java的集合类的时候，如果发生CMException，优先考虑fail-fast有关的情况，
 实际上这里并没有真的发生并发，只是Iterator使用了fail-fast的保护机制，

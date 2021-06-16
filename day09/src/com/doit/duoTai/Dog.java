@@ -10,6 +10,7 @@ package com.doit.duoTai;
 public class Dog extends Animal implements HomeKeeper{
     @Override
     public void  eat() {
+        new Dog().lookMe();
         System.out.println("dog eat");
     }
 

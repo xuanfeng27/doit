@@ -24,5 +24,7 @@ public class Test {
         com.show();
         com.faGongZi();
         com.show();
+        com.adjustSalary("aaa",500);
+        com.luckyEmployee();
     }
 }

@@ -25,13 +25,13 @@ interface A {
 class B {
     int x = 1;
     public void me(){
-        System.out.println("类优先原则");
+        System.out.println("******类优先原则*******");
     };
 }
 class C extends B implements A {
 
     public void pX() {
-        me();//
+        me();//class B 重写了me()
        // System.out.println(x);报错 对x的引用不明确
     }
     public static void main(String[] args) {
@@ -40,14 +40,12 @@ class C extends B implements A {
 }
 /*
 接口中的默认方法
- 若一个接口中定义了一个默认方法，而另外一个接口中也定义了一个同名同
-参数的方法（不管此方法是否是默认方法），在实现类同时实现了这两个接口时，会出现：接口冲突。
+ 若一个接口中定义了一个默认方法，而另外一个接口中也定义了一个同名同参数的方法（不管此方法是否是默认方法），
+在实现类同时实现了这两个接口时，会出现：接口冲突。
  解决办法：实现类必须覆盖接口中同名同参数的方法，来解决冲突。
- 若一个接口中定义了一个默认方法，而父类中也定义了一个同名同参数的非
-抽象方法，则不会出现冲突问题。因为此时遵守：类优先原则。接口中具有相同名称和参数的默认方法会被忽略。
+ 若一个接口中定义了一个默认方法，而父类中也定义了一个同名同参数的非抽象方法，则不会出现冲突问题。
+因为此时遵守：类优先原则。接口中具有相同名称和参数的默认方法会被忽略。
  */
-
-
 
 interface Playable {
     void play();
@@ -56,7 +54,7 @@ interface Bounceable {
     void play();
 }
 interface Rollable extends Playable, Bounceable {
-    Ball ball = new Ball("PingPang");
+    public final  static  Ball ball = new Ball("PingPang");
 }
 class Ball implements Rollable {
     private String name;

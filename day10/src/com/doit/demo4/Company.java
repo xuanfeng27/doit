@@ -1,6 +1,7 @@
 package com.doit.demo4;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @ClassName: Company
@@ -38,19 +39,23 @@ public class Company {
     }
 
     public void show(){
-
-        for (int i = 0; i < list.size(); i++) {
-               Employee employee = list.get(i);
-               System.out.println(employee.getName());
-               System.out.println(employee.getId());
-               System.out.println(employee.getCunkuan());
-               System.out.println(employee.getSalary());
-               if(employee instanceof Manager){
-                   Manager mg = (Manager)employee;
-                   System.out.println(mg.getBonus());
-               }
-           }
-        System.out.println(zongzichan);
+        try {
+            for (int i = 0; i < list.size(); i++) {
+                Employee employee = list.get(i);
+                System.out.println(employee.getName());
+                System.out.println(employee.getId());
+                System.out.println(employee.getCunkuan());
+                System.out.println(employee.getSalary());
+                if(employee instanceof Manager){
+                    Manager mg = (Manager)employee;
+                    System.out.println(mg.getBonus());
+                }
+                System.out.println("---------------------------");
+            }
+            System.out.println(zongzichan);
+        }catch (NullPointerException e){
+            System.out.println(e);
+        }
     }
 
     public void faGongZi(){
@@ -67,4 +72,28 @@ public class Company {
         }
     }
 
+    public void adjustSalary(String name,double num){
+        for (int i = 0; i < list.size(); i++) {
+            Employee e = list.get(i);
+            if (e.getName().equals(name)){
+                e.setSalary(e.getSalary()+num);
+                System.out.println(e.getSalary());
+            }
+        }
+    }
+
+    public String luckyEmployee(){
+        Random r = new Random();
+        int num = r.nextInt(list.size());
+        for (int i = 0; i < list.size(); i++) {
+            if(num == i){
+                return list.get(i).getName();
+            }
+        }
+        return "";
+    }
+
 }
+/*
+添加评选幸运员工(随机抽取一名员工并返回)。
+ */

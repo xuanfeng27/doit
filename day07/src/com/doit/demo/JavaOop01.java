@@ -63,7 +63,7 @@ class SonOop extends JavaOop01{
         //this 当前对象的引用，谁调用这个方法，谁就是当前对象
         System.out.println(a);
         System.out.println(this.a);
-        System.out.println(super.getA());
+        System.out.println(super.getA());//super.a 错，不可以继承父类私有的
     }
 
     public static void main(String[] args) {
