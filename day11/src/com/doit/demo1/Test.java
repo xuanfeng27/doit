@@ -64,6 +64,7 @@ class Test2{
     //方法一
     public static String reverseStr(String str){
         StringBuilder sb = new StringBuilder();
+       // return sb.append(str).reverse().toString();
         for (int i = str.length()-1; i >=0 ; i--) {
             sb.append(str.charAt(i));
         }
