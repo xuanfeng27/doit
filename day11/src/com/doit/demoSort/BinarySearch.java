@@ -21,7 +21,8 @@ public class BinarySearch {
         int low = 0;
         int high = arr.length-1;
         while (low <= high){
-            int mid = (low+high)/2;
+            //int mid = (low+high)/2;不推荐，可能会整型溢出
+            int mid  = low +(high-low)/2; //推荐写法
             if (key>arr[mid]){
                 low = mid+1;
             }else if(key<arr[mid]){
