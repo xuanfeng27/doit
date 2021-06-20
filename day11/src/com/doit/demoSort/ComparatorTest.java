@@ -60,11 +60,12 @@ public class ComparatorTest {
             public int compare(Object o1, Object o2) {
                 Goods2 g1 = (Goods2) o1;
                 Goods2 g2 = (Goods2) o2;
+              //return  Double.compare(g1.getPrice(),g2.getPrice());
                 return g1.getName().compareTo(g2.getName());
             }
         });
         for (int i = 0; i < all.length; i++) {
-            System.out.println(all[i].getName());
+            System.out.println(all[i].getPrice());
         }
         System.out.println(Arrays.toString(all));
     }
