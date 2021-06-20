@@ -21,7 +21,7 @@ Java比较器方式一：自然排序：java.lang.Comparable
 序集合中的元素，无需指定比较器。
  */
 
-class Goods implements Comparable {
+class Goods implements Comparable<Goods> {
     private String name;
     private double price;
 
@@ -32,17 +32,13 @@ class Goods implements Comparable {
 
     //按照价格，比较商品的大小
     @Override
-    public int compareTo(Object o) {
-        if(o instanceof Goods) {
-            Goods other = (Goods) o;
-            if (this.price > other.price) {
-                return 1;
-            } else if (this.price < other.price) {
-                return -1;
-            }
-            return 0;
+    public int compareTo(Goods other) {
+        if (this.price > other.price) {
+            return 1;
+        } else if (this.price < other.price) {
+            return -1;
         }
-        throw new RuntimeException("输入的数据类型不一致");
+        return 0;
     }
 
     public String getName() {
@@ -71,6 +67,9 @@ public class ComparableTest{
         all[3] = new Goods("《水浒传》", 120);
 
         Arrays.sort(all);
+        for (int i = 0; i < all.length; i++) {
+            System.out.println(all[i].getName());
+        }
         System.out.println(Arrays.toString(all));
     }
 }

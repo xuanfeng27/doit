@@ -55,12 +55,10 @@ public class ComparatorTest {
         all[1] = new Goods2("Childhood", 80);
         all[2] = new Goods2("Scarlet and Black", 140);
         all[3] = new Goods2("Notre Dame de Paris", 120);
-        Arrays.sort(all, new Comparator() {
+        Arrays.sort(all, new Comparator<Goods2>() {
             @Override
-            public int compare(Object o1, Object o2) {
-                Goods2 g1 = (Goods2) o1;
-                Goods2 g2 = (Goods2) o2;
-              //return  Double.compare(g1.getPrice(),g2.getPrice());
+            public int compare(Goods2 g1, Goods2 g2) {
+               // return (int) (g1.getPrice()-g2.getPrice());
                 return g1.getName().compareTo(g2.getName());
             }
         });
