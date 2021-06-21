@@ -1,5 +1,6 @@
 package com.doit.demoRegex;
 
+
 /**
  * @ClassName: RegexDemo
  * @Author: zll
@@ -61,9 +62,12 @@ public class RegexDemo {
         String regex = "[a-zA-Z0-9_]+@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)+";
         String mail = "fsd34ff@fs.doit.com.cn";
         boolean bool = mail.matches(regex);
-        System.out.println(bool);
+        System.out.println(bool);//true
 
        // "[1-9][0-9]{4,10}" 长度 5-11位 且 0不能开头 且 纯数字
 
+        String s1 = "重地";
+        String s2 = "通话";
+        System.out.println(s1.hashCode() == s2.hashCode());//true
     }
 }
