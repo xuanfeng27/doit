@@ -8,7 +8,7 @@ package com.doit.demo1;
  * @Version: 1.0
  */
 
-//泛型类自定义
+//泛型类自定义 public class 类名<T>{}
 //泛型方法自定义 public <> 返回值类型 方法名（）{}
 public class MyClass<Z> {
     private Z name;

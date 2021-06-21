@@ -29,34 +29,41 @@ public class DemoIterator {
         Iterator<Person> it2 = c1.iterator();
         while (it2.hasNext()){
             System.out.println(it2.next());
-            //System.out.println(it2.next().getName() + it2.next().getAge());//CCC 22
+            //System.out.println(it2.next().getName() + it2.next().getAge());
+            // 陷阱cursor++; 上一个元素name CCC + 下一个元素age 22
         }
 
         Collection<String> c2 = new ArrayList<>();
-        c2.add("liuyan");
-        c2.add("tangyan");
-        c2.add("dalang");
-        c2.add("jinlian");
+        c2.add("柳岩");
+        c2.add("唐嫣");
+        c2.add("大郎");
+        c2.add("金莲");
         Iterator<String> it4 = c2.iterator();
         while (it4.hasNext()){
             String next = it4.next();
-          /*  if("tangyan".equals(next)){//字符串放在equals前面，防止nullPointException
-                c2.add("ximenqing");//add成功，并发修改异常modCount++ != exceptedModCount
+          /*  if("唐嫣".equals(next)){//字符串放在equals前面，防止nullPointException报错
+                c2.add("西门");//add成功后，报并发修改异常modCount++ != exceptedModCount
             }*/
 
-          /*  if("dalang".equals(next)){
-          //成功，倒数第二个集合元素，size-- modCount++ ---> curse==size ---> hasNext()返回false
-                c2.remove("dalang");
+          /*  if("大郎".equals(next)){
+          //remove成功，因为是倒数第二个集合元素，size-- modCount++ ---> curse==size ---> hasNext()返回false
+                c2.remove("大郎");//ArrayList的remove操作报错；
             }*/
-            if("tangyan".equals(next)){
-                it4.remove();
-                //删除“tangyan”，it4中调用ArrayList.this.remove()方法，重新赋值expectedModCount=(++modCount)
+            if("唐嫣".equals(next)){
+                it4.remove();//迭代器自己的remove方法可以用
+                //删除“唐嫣”，it4中调用ArrayList.this.remove()方法，重新赋值expectedModCount=(++modCount)
             }
         }
 
-        //增强for循环 JDK1.5
-        Iterator<Person> it3 = c1.iterator();
-        for (Person p:c1) {
+        System.out.println("-----------------------------------------------------------");
+        //增强for循环 JDK1.5 加上，也是使用的iterator ，
+        Collection<String> c3 = new ArrayList<>();
+        c3.add("1");
+        c3.add("2");
+        c3.add("3");
+        c3.add("4");
+        Iterator<String> it3 = c3.iterator();
+        for (String s:c3) {
             if(it3.hasNext()){
                 System.out.println(it3.next());
             }
