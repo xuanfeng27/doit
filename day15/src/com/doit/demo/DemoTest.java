@@ -31,8 +31,12 @@ public class DemoTest {
         int[] arr1 = {6,7,8};
         System.arraycopy(arr,0,arr1,1,2);
         System.out.println(Arrays.toString(arr1));//[6, 1, 2]
-
-        int[] ints = Arrays.copyOf(arr, 10);
+        int[] arr2 = {};
+        int[] ints = arr2;
+        System.out.println(arr2);
+        System.out.println(ints);
+        ints = Arrays.copyOf(ints, 10);
+        System.out.println(ints);
         System.out.println(Arrays.toString(ints));//[1,2,3,4,5,0,0,0,0,0]
 
         Zll<String> zll = new Zll<>();
