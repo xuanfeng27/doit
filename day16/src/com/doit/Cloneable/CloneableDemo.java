@@ -9,8 +9,8 @@ package com.doit.Cloneable;
  */
 /*
 **克隆的前提条件:**
-- 被克隆的对象必须实现Cloneable接口
-- 必须重写clone方法
+- 被克隆的对象必须实现Cloneable接口,Object本身没有实现这个接口；
+- 必须重写Object clone()方法
  */
 
 public class CloneableDemo implements Cloneable{
