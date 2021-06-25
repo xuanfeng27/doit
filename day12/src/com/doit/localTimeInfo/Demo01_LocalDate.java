@@ -35,6 +35,8 @@ public class Demo01_LocalDate {
 
         System.out.println(year+"年"+monthValue+"月"+dayOfMonth+"日");
 
+        int i = now.withYear(2021).withMonth(2).lengthOfMonth();
+        System.out.println(i);
 
         //修改年份
 //        LocalDate localDate = now.withYear(2020);
@@ -62,7 +64,6 @@ public class Demo01_LocalDate {
         //指定日期
         LocalDate of = LocalDate.of(2020, 1, 30);
         System.out.println(of);
-
 
     }
 }
