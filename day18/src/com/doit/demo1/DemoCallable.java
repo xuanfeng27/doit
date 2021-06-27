@@ -11,7 +11,13 @@ import java.util.concurrent.FutureTask;
  * @Desc: java 程序
  * @Version: 1.0
  */
-
+/*
+与使用Runnable相比， Callable功能更强大些
+ 相比run()方法，可以有返回值
+ 方法可以抛出异常
+ 支持泛型的返回值
+ 需要借助FutureTask类，比如获取返回结果
+ */
 public class DemoCallable {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Call call = new Call(100);
