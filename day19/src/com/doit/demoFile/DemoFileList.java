@@ -18,22 +18,38 @@ import java.io.File;
 
 public class DemoFileList {
     public static void main(String[] args) {
-        File file = new File("D:\\zll\\doitedu\\基础讲义\\day02");
+        File file = new File("D:\\zll\\apps\\day02");
 
-        methods(file);
+        searchJava(file);
 
     }
 
-    public static void methods(File file) {
+    public static void searchJava(File file) {
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File fi:files){
+                if (fi.isFile()){
+                    if(fi.getName().toLowerCase().endsWith(".java"))
+                        System.out.println(fi);
+                }else {
+                    searchJava(fi);
+                }
+            }
+        }
+    }
+
+    public static void deleteFunc(File file) {
         File[] files = file.listFiles();
         for (File fi:files){
             if (fi.isFile()){
-               if(fi.getName().toLowerCase().endsWith(".java"))
-                   System.out.println(fi);
+                boolean delete = fi.delete();
+                System.out.println(delete);
             }else {
-                methods(fi);
+                deleteFunc(fi);
             }
         }
+        boolean b = file.delete();
+        System.out.println(b);
     }
 
    /* public static int method(int n){
