@@ -18,7 +18,7 @@ import java.util.concurrent.SynchronousQueue;
 class DemoBlockQueue {
 
     public static void main(String[] args) throws InterruptedException {
-        BlockingQueue<String> b = new ArrayBlockingQueue<>(5);
+        BlockingQueue<String> b = new ArrayBlockingQueue<>(5,true);//公平锁，默认采用非公平锁。
        /* b.put("aaa");
         b.put("bbb");
         b.put("ccc");
@@ -37,7 +37,7 @@ class DemoBlockQueue {
             public void run() {
                 try {
                     for (int i = 0; i < 20; i++) {
-                        b3.put(""+i);
+                        b.put(""+i);
                         System.out.println("添加"+i);
                     }
                 }catch (Exception e) {
@@ -52,7 +52,7 @@ class DemoBlockQueue {
             public void run() {
                 try {
                     for (int i = 0; i < 20; i++) {
-                        b3.take();
+                        b.take();
                         System.out.println("取出"+i);
                     }
                 }catch (Exception e) {
