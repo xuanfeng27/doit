@@ -18,9 +18,9 @@ public class DemoProperties {
         props.load(in);
         in.close();
         System.out.println(props);
-
-        FileWriter fw = new FileWriter("..\\props.properties");
-        props.setProperty("001","哈哈");  //键 无序 唯一 不允许 null键和null值
+        System.out.println(System.getProperty("user.dir"));////获取工程目录
+        FileWriter fw = new FileWriter("day20\\src\\com\\doit\\props.properties");
+        props.setProperty("001","哈k哈");  //键 无序 唯一 不允许 null键和null值
         props.store(fw,"");
         fw.close();
         System.out.println(props);
