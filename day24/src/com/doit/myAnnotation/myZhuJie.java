@@ -2,10 +2,7 @@ package com.doit.myAnnotation;
 
 import org.junit.Test;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.lang.reflect.Method;
 
 
@@ -27,8 +24,13 @@ import java.lang.reflect.Method;
              LOCAL_VARIABLE：用在局部变量上
  */
 
+/*
+@Documented: 用于指定被该元 Annotation 修饰的 Annotation 类将被
+javadoc 工具提取成文档。默认情况下，javadoc是不包括注解的。
+定义为Documented的注解必须设置Retention值为RUNTIME。
 
-
+ */
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE,ElementType.METHOD})
 @interface Book {
