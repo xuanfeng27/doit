@@ -1,0 +1,50 @@
+多表关系 
+	1对1
+		例子
+	1对多
+		例子
+	多对1
+		例子
+	多对多
+		例子
+	外键约束 
+		限制当前外键列的数据 
+		主键中有的数据 外键中可以没有 主键中没有的数据外键中就不能有
+		alter table 从表 add constraint 外键名(不要重复) foreign key 从表(列名)
+		references 主表(列名)
+多表查询
+	交叉查询 
+		select * from A,B 
+		笛卡尔集 积
+	内连接
+		隐式内连接
+		显示内连接
+	外连接
+		左外连接
+		右外连接
+子查询 
+	查询结果作为条件
+	查询结果作为伪表
+Properties
+	特点 
+		1.map接口实现类
+		2.键 String 值 String
+		3.唯一和IO直接结合使用
+	方法 
+		setProperty
+		getProperty
+		stringPropertyNames
+		load(Reader r)
+		load(inputStream in)
+如果获取字节码文件对象？
+	三种方式 
+		1.Object
+		2.静态属性
+		3.Class   推荐
+类什么时候加载(也即是静态代码块什么时候执行)
+	1.创建对象
+	2.访问静态成员
+	3.创建子类对象
+	4.获取字节码文件对象
+	
+	
