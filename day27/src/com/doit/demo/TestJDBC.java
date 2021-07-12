@@ -34,7 +34,8 @@ public class TestJDBC {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
         //System.out.println("select * from category WHERE cid='' AND cid='" +     "aaa' OR 'a'='a"    +"'");
         //testSqlLogin2();
-        methodUtil();
+        //methodUtil();
+
     }
 
     @Test
@@ -186,7 +187,20 @@ public class TestJDBC {
         con.close();
     }
 
-    //
+    // π”√UtilsJdbc
+    public static void methodTestUtils() throws SQLException {
+        String sql = "select * from category ";
+        Connection con = UtilsJdbc.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            String cid = rs.getString("cid");
+            String cname = rs.getString("cname");
+            System.out.println(cid + "  "+cname);
+        }
+
+        UtilsJdbc.close(con,ps,rs);
+    }
 
 
 }
